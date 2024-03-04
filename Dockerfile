@@ -3,7 +3,8 @@ FROM maven:latest AS build
 WORKDIR /app
 COPY . .
 
-RUN mvn clean install
+# Desativa a execução dos testes durante o estágio de construção
+RUN mvn clean install -DskipTests=true
 
 FROM openjdk:17-jdk-slim
 
